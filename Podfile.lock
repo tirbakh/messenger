@@ -1,0 +1,16 @@
+PODS:
+  - Porcupine-iOS (1.9.1)
+
+DEPENDENCIES:
+  - Porcupine-iOS
+
+SPEC REPOS:
+  trunk:
+    - Porcupine-iOS
+
+SPEC CHECKSUMS:
+  Porcupine-iOS: fb6a5f2565e006b8670bd8c5a4731f905d54d09f
+
+PODFILE CHECKSUM: 38721451208a3b1f8429e1f826dc49eb8c54562d
+
+COCOAPODS: 1.10.1
