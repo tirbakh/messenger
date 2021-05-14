@@ -8,7 +8,7 @@
 import UIKit
 import Speech
 
-class ViewController: UIViewController, SFSpeechRecognizerDelegate, KeyphaseDetectorDelegate {
+class ConversationsViewController: UIViewController, SFSpeechRecognizerDelegate, KeyphaseDetectorDelegate {
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var recordButton: UIButton!
     

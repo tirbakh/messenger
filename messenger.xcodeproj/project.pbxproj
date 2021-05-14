@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		50103D61264EF4D40049B7D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50103D60264EF4D40049B7D5 /* AppDelegate.swift */; };
 		50103D63264EF4D40049B7D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50103D62264EF4D40049B7D5 /* SceneDelegate.swift */; };
-		50103D65264EF4D40049B7D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50103D64264EF4D40049B7D5 /* ViewController.swift */; };
+		50103D65264EF4D40049B7D5 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50103D64264EF4D40049B7D5 /* ConversationsViewController.swift */; };
 		50103D68264EF4D40049B7D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50103D66264EF4D40049B7D5 /* Main.storyboard */; };
 		50103D6A264EF4D60049B7D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50103D69264EF4D60049B7D5 /* Assets.xcassets */; };
 		50103D6D264EF4D60049B7D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50103D6B264EF4D60049B7D5 /* LaunchScreen.storyboard */; };
@@ -21,7 +21,7 @@
 		50103D5D264EF4D40049B7D5 /* messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50103D60264EF4D40049B7D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50103D62264EF4D40049B7D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		50103D64264EF4D40049B7D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		50103D64264EF4D40049B7D5 /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
 		50103D67264EF4D40049B7D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		50103D69264EF4D60049B7D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50103D6C264EF4D60049B7D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -65,40 +65,64 @@
 		50103D5F264EF4D40049B7D5 /* messenger */ = {
 			isa = PBXGroup;
 			children = (
-				50103D77264EF5650049B7D5 /* controllers */,
-				50103D76264EF5590049B7D5 /* views */,
-				50103D75264EF4E90049B7D5 /* models */,
-				50103D60264EF4D40049B7D5 /* AppDelegate.swift */,
-				50103D62264EF4D40049B7D5 /* SceneDelegate.swift */,
-				50103D64264EF4D40049B7D5 /* ViewController.swift */,
-				50103D66264EF4D40049B7D5 /* Main.storyboard */,
-				50103D69264EF4D60049B7D5 /* Assets.xcassets */,
-				50103D6B264EF4D60049B7D5 /* LaunchScreen.storyboard */,
+				509B4A10264F1F3000BC2B88 /* Controllers */,
+				509B4A0F264F1F2700BC2B88 /* Views */,
+				509B4A0E264F1F1F00BC2B88 /* Models */,
+				509B4A0C264F1EFF00BC2B88 /* ViewModels */,
+				509B4A0B264F1EF400BC2B88 /* Resources */,
 				50103D6E264EF4D60049B7D5 /* Info.plist */,
 				50103D78264EF5A90049B7D5 /* KeyphaseDetector.swift */,
 			);
 			path = messenger;
 			sourceTree = "<group>";
 		};
-		50103D75264EF4E90049B7D5 /* models */ = {
+		509B4A0B264F1EF400BC2B88 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				50103D60264EF4D40049B7D5 /* AppDelegate.swift */,
+				50103D62264EF4D40049B7D5 /* SceneDelegate.swift */,
 			);
-			path = models;
+			path = Resources;
 			sourceTree = "<group>";
 		};
-		50103D76264EF5590049B7D5 /* views */ = {
+		509B4A0C264F1EFF00BC2B88 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = views;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		50103D77264EF5650049B7D5 /* controllers */ = {
+		509B4A0E264F1F1F00BC2B88 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = controllers;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		509B4A0F264F1F2700BC2B88 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				509B4A11264F1F7A00BC2B88 /* Storyboards */,
+				50103D69264EF4D60049B7D5 /* Assets.xcassets */,
+				50103D6B264EF4D60049B7D5 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		509B4A10264F1F3000BC2B88 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				50103D64264EF4D40049B7D5 /* ConversationsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		509B4A11264F1F7A00BC2B88 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				50103D66264EF4D40049B7D5 /* Main.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		D55A62161C31B32BC9315DCB /* Frameworks */ = {
@@ -250,7 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50103D65264EF4D40049B7D5 /* ViewController.swift in Sources */,
+				50103D65264EF4D40049B7D5 /* ConversationsViewController.swift in Sources */,
 				50103D79264EF5A90049B7D5 /* KeyphaseDetector.swift in Sources */,
 				50103D61264EF4D40049B7D5 /* AppDelegate.swift in Sources */,
 				50103D63264EF4D40049B7D5 /* SceneDelegate.swift in Sources */,
@@ -330,7 +354,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -385,7 +409,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
