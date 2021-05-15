@@ -16,9 +16,6 @@ class LoginViewController: UIViewController {
     private let imageView: UIImageView = {
         let imageView = LoginCommon.getImageView()
         imageView.image = UIImage(named: "logo")
-        imageView.layer.cornerRadius = 65
-        imageView.layer.borderWidth = 1
-        imageView.layer.borderColor = UIColor.gray.cgColor
         return imageView
     }()
     
@@ -64,8 +61,6 @@ class LoginViewController: UIViewController {
         super.viewDidLayoutSubviews()
         scrollView.frame = view.bounds
         
-        loginButtun.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
-        
         emailField.delegate = self
         passwordField.delegate =  self
         
@@ -74,6 +69,9 @@ class LoginViewController: UIViewController {
         emailField.frame = LoginCommon.getCGRectField(scrollView, imageView.bottom + bufferSize * 2)
         passwordField.frame = LoginCommon.getCGRectField(scrollView, emailField.bottom + bufferSize)
         loginButtun.frame = LoginCommon.getCGRectField(scrollView, passwordField.bottom + bufferSize)
+        
+        loginButtun.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
+        imageView.layer.cornerRadius = imageView.width/2.0
     }
     
     @objc private func didTapLoginButton() {

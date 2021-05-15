@@ -80,24 +80,26 @@ class RegisterViewController: UIViewController {
         super.viewDidLayoutSubviews()
         scrollView.frame = view.bounds
         
-        registerButton.addTarget(self, action: #selector(didTapRegisterButton), for: .touchUpInside)
-        
         nameField.delegate = self
         surnameField.delegate = self
         emailField.delegate = self
         passwordField.delegate = self
         
         let bufferSize: CGFloat = 15
-        imageView.frame = LoginCommon.getCGRectImage(scrollView, bufferSize * 4)
+        imageView.frame = LoginCommon.getCGRectImage(scrollView, bufferSize * 3)
         nameField.frame = LoginCommon.getCGRectField(scrollView, imageView.bottom + bufferSize * 2)
         surnameField.frame = LoginCommon.getCGRectField(scrollView, nameField.bottom + bufferSize)
         emailField.frame = LoginCommon.getCGRectField(scrollView, surnameField.bottom + bufferSize)
         passwordField.frame = LoginCommon.getCGRectField(scrollView, emailField.bottom + bufferSize)
         registerButton.frame = LoginCommon.getCGRectField(scrollView, passwordField.bottom + bufferSize)
+        
+        
+        registerButton.addTarget(self, action: #selector(didTapRegisterButton), for: .touchUpInside)
+        imageView.layer.cornerRadius = imageView.width/2.0
     }
     
     @objc private func didTapProfilePic() {
-        print("tapped")
+        presentPhotoActionSheet()
     }
     
     @objc private func didTapRegisterButton() {
@@ -143,4 +145,47 @@ extension RegisterViewController: UITextFieldDelegate {
         
         return true
     }
+}
+
+extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+            return
+        }
+        
+        self.imageView.image = selectedImage
+    }
+
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            picker.dismiss(animated: true, completion: nil)
+        }
+    
+    private func presentPhotoActionSheet() {
+        let actionSheet = UIAlertController(title: "Фото профиля", message: "Загрузить фото", preferredStyle: .actionSheet)
+
+        actionSheet.addAction(UIAlertAction(title: "Камера", style: .default, handler: { [weak self] _ in
+            self?.presentPhoto(sourceType: .camera)
+            
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Галерея", style: .default, handler: { [weak self] _ in
+            self?.presentPhoto(sourceType: .photoLibrary)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Отмена", style: .default, handler: nil))
+        
+        present(actionSheet, animated: true)
+    }
+    
+    private func presentPhoto(sourceType: UIImagePickerController.SourceType) {
+        let vc = UIImagePickerController()
+        vc.sourceType = sourceType
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
+    
+    
 }

@@ -25,6 +25,9 @@ class LoginCommon {
     class func getImageView() ->  UIImageView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
+        imageView.layer.masksToBounds = true
+        imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = UIColor.gray.cgColor
         imageView.clipsToBounds = true
         return imageView
     }
