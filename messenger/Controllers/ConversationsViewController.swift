@@ -4,7 +4,6 @@ import Firebase
 class ConversationViewControllers: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .cyan
     }
     
     override func viewDidAppear(_ animated: Bool) {
