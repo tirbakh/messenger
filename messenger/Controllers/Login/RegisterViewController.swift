@@ -115,42 +115,43 @@ class RegisterViewController: UIViewController {
               !surname.isEmpty,
               !email.isEmpty,
               !password.isEmpty else {
-            emptyFieldsErrorAlert()
+            errorAlert(message: "Поля не должны быть пустыми")
             return
         }
         
-        guard (password.count > minPasswordLenght) else {
-            shortPasswordErrorAlert()
+        guard (password.count >= minPasswordLenght) else {
+            errorAlert(message: "Пароль должен быть не меньше \(minPasswordLenght) символов")
             return
         }
         
-        Firebase.Auth.auth().createUser(withEmail: email, password: password) { [weak self] (authResult, error) in
+        DatabaseManager.shared.userExists(with: email) { [weak self] userExists in
             guard let strongSelf = self else {
                 return
             }
-
-            guard let result = authResult, error == nil else {
-                print("register error occured \(String(describing: error?.localizedDescription))")
+            
+            guard !userExists else {
+                strongSelf.errorAlert(message: "Пользователь с таким email уже существует")
                 return
             }
             
-            print(result.additionalUserInfo as Any)
-            
-            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+            Firebase.Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
+                guard let result = authResult, error == nil else {
+                    strongSelf.errorAlert(message: "Что-то пошло не так! \(error?.localizedDescription ?? "")")
+                    return
+                }
+                DatabaseManager.shared.addUser(with: User(name: name,
+                                                          surname: surname,
+                                                          emailAddress: email))
+                
+                print(result.additionalUserInfo as Any)
+                
+                strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+            }
         }
-        
-        
-        
-        
     }
     
-    private func emptyFieldsErrorAlert() {
-        let alert = LoginCommon.getFieldsValidationErrorAlert(body: "Поля не должны быть пустыми")
-        present(alert, animated: true)
-    }
-    
-    private func shortPasswordErrorAlert() {
-        let alert = LoginCommon.getFieldsValidationErrorAlert(body: "Пароль должен быть не меньше \(minPasswordLenght + 1) символов")
+    private func errorAlert(message body: String) {
+        let alert = LoginCommon.getFieldsValidationErrorAlert(body: body)
         present(alert, animated: true)
     }
 }
