@@ -20,6 +20,8 @@
 		509B4A1D264F223600BC2B88 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509B4A1C264F223600BC2B88 /* VideoPlayerViewController.swift */; };
 		509B4A20264F225F00BC2B88 /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509B4A1F264F225F00BC2B88 /* NewConversationViewController.swift */; };
 		509B4A23264F227300BC2B88 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509B4A22264F227300BC2B88 /* ProfileViewController.swift */; };
+		509B4A28264F317800BC2B88 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509B4A27264F317800BC2B88 /* Extensions.swift */; };
+		509B4A32264FE0C900BC2B88 /* LoginCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509B4A31264FE0C900BC2B88 /* LoginCommon.swift */; };
 		F8F855F8E17D47BB28AB2CDA /* libPods-messenger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F5807396F8B7251CCFDA29 /* libPods-messenger.a */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,8 @@
 		509B4A1C264F223600BC2B88 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		509B4A1F264F225F00BC2B88 /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		509B4A22264F227300BC2B88 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		509B4A27264F317800BC2B88 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		509B4A31264FE0C900BC2B88 /* LoginCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCommon.swift; sourceTree = "<group>"; };
 		99F5807396F8B7251CCFDA29 /* libPods-messenger.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-messenger.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF139999D0EF10D235D01F87 /* Pods-messenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-messenger.debug.xcconfig"; path = "Target Support Files/Pods-messenger/Pods-messenger.debug.xcconfig"; sourceTree = "<group>"; };
 		FD1EC97B298B9A639CBC7E25 /* Pods-messenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-messenger.release.xcconfig"; path = "Target Support Files/Pods-messenger/Pods-messenger.release.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 		509B4A0B264F1EF400BC2B88 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				509B4A27264F317800BC2B88 /* Extensions.swift */,
 				50103D60264EF4D40049B7D5 /* AppDelegate.swift */,
 				50103D62264EF4D40049B7D5 /* SceneDelegate.swift */,
 			);
@@ -116,7 +121,6 @@
 			children = (
 				509B4A11264F1F7A00BC2B88 /* Storyboards */,
 				50103D69264EF4D60049B7D5 /* Assets.xcassets */,
-				50103D6B264EF4D60049B7D5 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -126,8 +130,7 @@
 			children = (
 				50103D64264EF4D40049B7D5 /* ConversationsViewController.swift */,
 				509B4A13264F21FC00BC2B88 /* PhotoViewerViewController.swift */,
-				509B4A16264F220B00BC2B88 /* LoginViewController.swift */,
-				509B4A19264F221E00BC2B88 /* RegisterViewController.swift */,
+				509B4A25264F28C100BC2B88 /* Login */,
 				509B4A1C264F223600BC2B88 /* VideoPlayerViewController.swift */,
 				509B4A1F264F225F00BC2B88 /* NewConversationViewController.swift */,
 				509B4A22264F227300BC2B88 /* ProfileViewController.swift */,
@@ -138,9 +141,28 @@
 		509B4A11264F1F7A00BC2B88 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				509B4A30264FE0BD00BC2B88 /* Login */,
+				50103D6B264EF4D60049B7D5 /* LaunchScreen.storyboard */,
 				50103D66264EF4D40049B7D5 /* Main.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		509B4A25264F28C100BC2B88 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				509B4A31264FE0C900BC2B88 /* LoginCommon.swift */,
+				509B4A16264F220B00BC2B88 /* LoginViewController.swift */,
+				509B4A19264F221E00BC2B88 /* RegisterViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		509B4A30264FE0BD00BC2B88 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		D55A62161C31B32BC9315DCB /* Frameworks */ = {
@@ -300,7 +322,9 @@
 				509B4A14264F21FC00BC2B88 /* PhotoViewerViewController.swift in Sources */,
 				509B4A1D264F223600BC2B88 /* VideoPlayerViewController.swift in Sources */,
 				509B4A20264F225F00BC2B88 /* NewConversationViewController.swift in Sources */,
+				509B4A32264FE0C900BC2B88 /* LoginCommon.swift in Sources */,
 				50103D61264EF4D40049B7D5 /* AppDelegate.swift in Sources */,
+				509B4A28264F317800BC2B88 /* Extensions.swift in Sources */,
 				50103D63264EF4D40049B7D5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
