@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import Firebase
 
 class RegisterViewController: UIViewController {
+    private let minPasswordLenght = 6
 
     private let scrollView: UIScrollView = {
         let scrollView = LoginCommon.getScrollView()
@@ -16,7 +18,7 @@ class RegisterViewController: UIViewController {
     
     private let imageView: UIImageView = {
         let imageView = LoginCommon.getImageView()
-        imageView.image = UIImage(systemName: "person")
+        imageView.image = UIImage(systemName: "person.circle")
         imageView.tintColor = .gray
         return imageView
     }()
@@ -105,17 +107,41 @@ class RegisterViewController: UIViewController {
     @objc private func didTapRegisterButton() {
         LoginCommon.resiginAll([nameField, surnameField, emailField, passwordField])
         
-        guard !nameField.text!.isEmpty && !surnameField.text!.isEmpty && !emailField.text!.isEmpty && !passwordField.text!.isEmpty else {
+        guard let name = nameField.text,
+              let surname = surnameField.text,
+              let email = emailField.text,
+              let password = passwordField.text,
+              !name.isEmpty,
+              !surname.isEmpty,
+              !email.isEmpty,
+              !password.isEmpty else {
             emptyFieldsErrorAlert()
             return
         }
         
-        guard (passwordField.text!.count > 5) else {
+        guard (password.count > minPasswordLenght) else {
             shortPasswordErrorAlert()
             return
         }
         
-        //Firebase register
+        Firebase.Auth.auth().createUser(withEmail: email, password: password) { [weak self] (authResult, error) in
+            guard let strongSelf = self else {
+                return
+            }
+
+            guard let result = authResult, error == nil else {
+                print("register error occured \(String(describing: error?.localizedDescription))")
+                return
+            }
+            
+            print(result.additionalUserInfo as Any)
+            
+            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+        }
+        
+        
+        
+        
     }
     
     private func emptyFieldsErrorAlert() {
@@ -124,7 +150,7 @@ class RegisterViewController: UIViewController {
     }
     
     private func shortPasswordErrorAlert() {
-        let alert = LoginCommon.getFieldsValidationErrorAlert(body: "Пароль должен быть не меньше 6 символов")
+        let alert = LoginCommon.getFieldsValidationErrorAlert(body: "Пароль должен быть не меньше \(minPasswordLenght + 1) символов")
         present(alert, animated: true)
     }
 }

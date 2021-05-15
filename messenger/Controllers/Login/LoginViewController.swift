@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
     private let scrollView: UIScrollView = {
@@ -77,12 +78,28 @@ class LoginViewController: UIViewController {
     @objc private func didTapLoginButton() {
         LoginCommon.resiginAll([emailField, passwordField])
         
-        guard !emailField.text!.isEmpty && !passwordField.text!.isEmpty else {
+        guard let email = emailField.text,
+              let password = passwordField.text,
+              !email.isEmpty,
+              !password.isEmpty else {
             emptyFieldsErrorAlert()
             return
         }
         
-        //Firebase login
+        Firebase.Auth.auth().signIn(withEmail: email, password: password) { [weak self] (authResult, error) in
+            guard let strongSelf = self else {
+                return
+            }
+            
+            guard let result = authResult, error == nil else {
+                print("Failed \(String(describing: error?.localizedDescription))")
+                return
+            }
+            
+            print(result.additionalUserInfo as Any)
+            
+            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+        }
     }
     
     private func emptyFieldsErrorAlert() {
