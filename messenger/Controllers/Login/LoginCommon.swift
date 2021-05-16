@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import JGProgressHUD
 
 class LoginCommon {
     class func getTextField() -> UITextField {
